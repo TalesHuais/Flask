@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block conteudo %}
+
+    {% set mensagens = get_flashed_messages() %}
+    {% if mensagens %}
+        {% for msg in mensagens %}
+            {{msg}}
+        {% endfor %}
+    {% endif %}
+            <form action="/animais/save" method="post">
+                <label for="nome">Nome: </label>
+                <input type="text" name="nome" id="nome">
+                <label for="especie">Espécie</label>
+                <input type="text" name="especie" id="especie">
+                <label for="idade">Idade: </label>
+                <input type="number" name="idade" id="idade">
+                <button type="submit">Salvar</button>
+            </form>
+
+{% endblock %}

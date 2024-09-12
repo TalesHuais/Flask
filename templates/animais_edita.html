@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block conteudo %}
+
+    {% set mensagens = get_flashed_messages() %}
+    {% if mensagens %}
+        {% for msg in mensagens %}
+            {{msg}}
+        {% endfor %}
+    {% endif %}
+            <form action="/animais/edita-save" method="post">
+                <input type="hidden" name="id" value="{{dados.id_animal}}">
+                <label for="nome">Nome: </label>
+                <input type="text" name="nome" id="nome" value={{dados.nome}}>
+                <label for="especie">Espécie</label>
+                <input type="text" name="especie" id="especie" value={{dados.especie}}>
+                <label for="idade">Idade: </label>
+                <input type="number" name="idade" id="idade" value={{dados.idade}}>
+                <button type="submit">Salvar</button>
+            </form>
+
+
+{% endblock %}

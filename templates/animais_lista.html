@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block conteudo %}
+
+    {% set mensagens = get_flashed_messages() %}
+    {% if mensagens %}
+        {% for msg in mensagens %}
+            {{msg}}
+        {% endfor %}
+    {% endif %}
+
+    <a href="/animais/add">+ Adicionar</a>
+    <table>
+        <tr>
+            <th>Nome</th>
+            <th>Espécie</th>
+            <th>Idade</th>
+            <th>Edita</th>
+            <th>Remove</th>
+        </tr>
+        {% for animal in dados %}
+        <tr>
+            <td>{{animal.nome}}</td>
+            <td>{{animal.especie}}</td>
+            <td>{{animal.idade}}</td>
+            <td>
+                <a href="/animais/edita/{{animal.id_animal}}">Editar</a>
+            </td>
+            <td>
+                <a href="/animais/remove/{{animal.id_animal}}">Remover</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
